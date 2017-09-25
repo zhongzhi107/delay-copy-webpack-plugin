@@ -17,7 +17,7 @@ function DelayCopyWebpack(options) {
 DelayCopyWebpack.prototype.apply = function (compiler) {
   var self = this;
   compiler.plugin('done', function (stats) {
-    setTimeout(function() {
+    var doCopy = function (self) {
       packingGlob(self.options.from).forEach(function(file) {
         var from = path.resolve(process.cwd(), file);
         var to = path.resolve(process.cwd(), self.options.to, file);
@@ -28,7 +28,14 @@ DelayCopyWebpack.prototype.apply = function (compiler) {
           console.warn(from + ' not found');
         }
       });
-    }, self.interval);
+    }
+    if (self.options.interval) {
+      doCopy(self);
+    } else {
+      setTimeout(function() {
+        doCopy(self);
+      }, self.options.interval);
+    }
   });
 };
 

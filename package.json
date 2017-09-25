@@ -1,6 +1,6 @@
 {
-  "name": "delay-copy-webpack",
-  "version": "1.0.0",
+  "name": "delay-copy-webpack-plugin",
+  "version": "1.0.1",
   "description": "Copy files after webpack build",
   "main": "index.js",
   "scripts": {
