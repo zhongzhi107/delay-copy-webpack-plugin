@@ -23,10 +23,20 @@ Allowed values are as follows:
 ## Example
 
 ```javascript
-//webpack.config.js
-new DelayCopyWebpackPlugin({
-  from: 'webpack-assets.json',
-  to: 'dist/server',
-  interval: 2000
-}),
+
+const DelayCopyWebpackPlugin = require('delay-copy-webpack-plugin');
+ 
+/* webpack config object */
+module.exports = {
+    ...
+    plugins: [
+      new DelayCopyWebpackPlugin({
+        from: 'webpack-assets.json',
+        to: 'dist/server',
+        interval: 2000
+      }),
+    ]
+}
+
 ```
+
